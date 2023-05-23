@@ -1,0 +1,20 @@
+#fluxogram{
+  padding: 0 max( 1em, calc(1400px - 100vw) / 2);
+  .data-header{
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .data-section{
+    padding: 5px;
+    text-align: center;
+
+    h2{
+      font-weight: normal!important;
+      font-size: 1em;
+    }
+  }
+}
