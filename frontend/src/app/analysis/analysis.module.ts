@@ -12,20 +12,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { FluxogramComponent } from './pages/fluxogram/fluxogram.component';
 
 @NgModule({
   providers: [
     AnalysisState,
     AnalysisApi,
     AnalysisFacade,
-    analysisInitializerProvider
+    analysisInitializerProvider,
   ],
-  declarations: [
-    AnalysisComponent,
-    AnalysisTableComponent,
-    FluxogramComponent,
-  ],
+  declarations: [AnalysisComponent, AnalysisTableComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -34,6 +29,6 @@ import { FluxogramComponent } from './pages/fluxogram/fluxogram.component';
     MatTableModule,
     MatPaginatorModule,
     AnalysisRoutingModule,
-  ]
+  ],
 })
-export class AnalysisModule { }
+export class AnalysisModule {}

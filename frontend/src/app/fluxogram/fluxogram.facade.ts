@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AnalysisState } from './state/analysis-state/analysis.state';
-import { AnalysisApi } from './api/analysis.api';
+import { FluxogramState } from './state/fluxogram-state/fluxogram.state';
+import { FluxogramApi } from './api/fluxogram.api';
 
 @Injectable()
-export class AnalysisFacade {
+export class FluxogramFacade {
   public constructor(
-    private readonly state: AnalysisState,
-    private readonly api: AnalysisApi
+    private readonly state: FluxogramState,
+    private readonly api: FluxogramApi
   ) {}
 
   public fetchProcessosData() {
