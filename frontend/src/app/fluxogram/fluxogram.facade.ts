@@ -9,15 +9,14 @@ export class FluxogramFacade {
     private readonly api: FluxogramApi
   ) {}
 
-  public fetchProcessosData() {
-    this.api.fetchProcessosData().subscribe((processosData) => {
-      this.state.setProcessoData(processosData);
+  public fetchProcessosStats() {
+    this.api.fetchProcessosStats().subscribe((processoStats) => {
+      this.state.setProcessoStats(processoStats);
+      console.log(processoStats);
     });
   }
 
-  public getProcessoData() {
-    return this.state.getProcessoData();
+  public getProcessoStats() {
+    return this.state.getProcessoStats();
   }
-
-  public getProcessosStats() {}
 }

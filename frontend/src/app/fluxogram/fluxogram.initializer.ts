@@ -3,7 +3,7 @@ import { FluxogramFacade } from './fluxogram.facade';
 
 export const fluxogramInitializer =
   (fluxogramFacade: FluxogramFacade) => () => {
-    fluxogramFacade.fetchProcessosData();
+    fluxogramFacade.fetchProcessosStats();
   };
 
 export const fluxogramInitializerProvider = {

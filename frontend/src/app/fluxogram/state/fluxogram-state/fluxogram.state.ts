@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Processo } from '../../types/Processo';
+import { ProcessoStats } from '../../types/ProcessoStats';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class FluxogramState {
-  private readonly processoData = new BehaviorSubject([] as Processo[]);
+  private readonly processoStats = new BehaviorSubject([] as ProcessoStats[]);
 
-  public getProcessoData() {
-    return this.processoData.asObservable();
+  public getProcessoStats() {
+    return this.processoStats.asObservable();
   }
 
-  public setProcessoData(processoData: Processo[]) {
-    this.processoData.next(processoData);
+  public setProcessoStats(processoStats: ProcessoStats[]) {
+    this.processoStats.next(processoStats);
   }
 }

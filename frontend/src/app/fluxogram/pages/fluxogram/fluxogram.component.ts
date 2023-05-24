@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as d3 from 'd3';
+import { ProcessoStats } from '../../types/ProcessoStats';
+import { FluxogramFacade } from '../../fluxogram.facade';
 
 @Component({
   selector: 'app-fluxogram',
@@ -13,6 +15,20 @@ export class FluxogramComponent {
   process_count = 0;
   group_process_count = 0;
   avg_process_duration = 0;
+
+  processoStats: ProcessoStats = {
+    casesCount: 0,
+    movimentosCount: 0,
+    avgCaseDuration: 0,
+    avgMovimentoDuration: 0,
+    avgMovimentosPerCase: 0,
+  };
+
+  constructor(facade: FluxogramFacade) {
+    facade.getProcessoStats().subscribe((processoStats) => {
+      this.processoStats = processoStats[0];
+    });
+  }
 
   ngOnInit(): void {
     this.createSvg();
