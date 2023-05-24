@@ -14,6 +14,7 @@ export class AnalysisComponent {
   constructor(facade: AnalysisFacade) {
     facade.getProcessoData().subscribe((processoData) => {
       this.processoList = processoData;
+      console.log(this.processoList);
     });
   }
 }

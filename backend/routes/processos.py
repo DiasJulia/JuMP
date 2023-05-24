@@ -70,3 +70,26 @@ async def get_processos_infos(request: ProcessosInfosInput):
         })
 
     return { "cases": cases }
+
+@router.get("/", status_code=200)
+async def get_processos_infos():
+    """
+    Returns a list of all processos with some stats and a count
+    of how many times the given movimento happened.
+    """
+    cases, df = [], core_instance.log.copy()
+    df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
+
+    for NPU, group in df.groupby(CASE_ID):
+        trace_duration = group['duration'].sum()
+        pinned_movimento_count = len(
+            group
+        )
+        cases.append({
+            "NPU": NPU,
+            "totalMovimentos": len(group),
+            "totalDuration": trace_duration.total_seconds(),
+        })
+
+    return cases
+
