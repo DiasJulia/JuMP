@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ProcessStatsComponent } from './components/process-stats/process-stats.component';
 
 @NgModule({
   providers: [
@@ -19,7 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
     FluxogramFacade,
     fluxogramInitializerProvider,
   ],
-  declarations: [FluxogramComponent],
+  declarations: [FluxogramComponent, ProcessStatsComponent],
   imports: [
     CommonModule,
     MatIconModule,

@@ -1,21 +1,4 @@
 <div id="fluxogram">
-  <div class="data-header">
-    <div class="data-section">
-      <h2>Quantidade de movimentos</h2>
-      <p>{{processoStats.movimentosCount}}</p>
-    </div>
-    <div class="data-section">
-      <h2>Quantidade de processos</h2>
-      <p>{{processoStats.casesCount}}</p>
-    </div>
-    <div class="data-section">
-      <h2>Número de grupos de processos</h2>
-      <p>{{processoStats.avgMovimentosPerCase}}</p>
-    </div>
-    <div class="data-section">
-      <h2>Média da duração dos processos</h2>
-      <p>{{avgCaseDuration.anos}} anos, {{avgCaseDuration.meses}} meses, {{avgCaseDuration.dias}} dias, {{avgCaseDuration.horas}} horas, {{avgCaseDuration.minutos}} minutos</p>
-    </div>
-  </div>
+  <app-process-stats></app-process-stats>
   <figure id="fluxogram"></figure>
 </div>
