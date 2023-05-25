@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as d3 from 'd3';
 import { ProcessoStats } from '../../types/ProcessoStats';
 import { FluxogramFacade } from '../../fluxogram.facade';
+import { ImageApiService } from 'src/app/shared/services/image-api.service';
 
 @Component({
   selector: 'app-fluxogram',
@@ -20,21 +21,18 @@ export class FluxogramComponent {
     avgMovimentoDuration: 0,
   };
 
-  constructor(facade: FluxogramFacade) {
+  constructor(facade: FluxogramFacade, imageApi: ImageApiService) {
     facade.getProcessoStats().subscribe((processoStats) => {
       this.processoStats = processoStats[0];
       this.setTimeFromSeconds(this.processoStats?.avgCaseDuration);
     });
+    imageApi.getFlowGraph().subscribe((data) => {
+      this.svg = data;
+      d3.select('#fluxogram').html(this.svg);
+    });
   }
 
-  ngOnInit(): void {
-    this.createSvg();
-  }
-
-  private createSvg(): void {
-    d3.select('figure#fluxogram > *').remove();
-    this.svg = d3.select('figure#fluxogram').append('svg').append('g');
-  }
+  ngOnInit(): void {}
 
   setTimeFromSeconds(seconds: number) {
     this.avgCaseDuration.anos = Math.floor(seconds / 31104000);
