@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, SecurityContext } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { map, take } from 'rxjs/operators';
 
@@ -17,7 +17,12 @@ export class ImageApiService {
       })
       .pipe(
         take(1),
-        map((res: string) => this.sanitizer.bypassSecurityTrustHtml(res))
+        map((res: string) =>
+          this.sanitizer.sanitize(
+            SecurityContext.HTML,
+            this.sanitizer.bypassSecurityTrustHtml(res)
+          )
+        )
       );
   }
 }
