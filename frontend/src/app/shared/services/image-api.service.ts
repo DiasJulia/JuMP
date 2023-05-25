@@ -5,17 +5,19 @@ import { map, take } from 'rxjs/operators';
 
 @Injectable()
 export class ImageApiService {
-    constructor(
-        private readonly http: HttpClient,
-        private sanitizer: DomSanitizer
-    ) { }
+  constructor(
+    private readonly http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {}
 
-	public getFlowGraph() {
-		return this.http.get('/visualization/image/', {
-			responseType: 'text',
-        }).pipe(take(1),
-                map((res: string) =>
-                    this.sanitizer.bypassSecurityTrustHtml(res)
-        ));
-	}
+  public getFlowGraph() {
+    return this.http
+      .get('http://localhost:8000/api/visualization/image/', {
+        responseType: 'text',
+      })
+      .pipe(
+        take(1),
+        map((res: string) => this.sanitizer.bypassSecurityTrustHtml(res))
+      );
+  }
 }
