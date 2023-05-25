@@ -13,12 +13,17 @@ export class FluxogramComponent {
 
   avgCaseDuration = { anos: 0, meses: 0, dias: 0, horas: 0, minutos: 0 };
 
-  processoStats: ProcessoStats = <ProcessoStats>{};
+  processoStats: ProcessoStats = <ProcessoStats>{
+    avgCaseDuration: 0,
+    movimentosCount: 0,
+    avgMovimentosPerCase: 0,
+    avgMovimentoDuration: 0,
+  };
 
   constructor(facade: FluxogramFacade) {
     facade.getProcessoStats().subscribe((processoStats) => {
       this.processoStats = processoStats[0];
-      this.setTimeFromSeconds(this.processoStats.avgCaseDuration);
+      this.setTimeFromSeconds(this.processoStats?.avgCaseDuration);
     });
   }
 
