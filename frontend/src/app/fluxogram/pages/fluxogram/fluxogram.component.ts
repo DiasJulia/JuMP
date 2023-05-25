@@ -28,7 +28,10 @@ export class FluxogramComponent {
     });
     imageApi.getFlowGraph().subscribe((data) => {
       this.svg = data;
-      d3.select('#fluxogram').html(this.svg);
+      d3.select('#fluxogram')
+        .append('section')
+        .classed('svg-container', true)
+        .html(this.svg);
     });
   }
 
