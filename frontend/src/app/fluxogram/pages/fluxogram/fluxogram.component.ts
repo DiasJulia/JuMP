@@ -18,37 +18,7 @@ export class FluxogramComponent {
   constructor(facade: FluxogramFacade) {
     facade.getProcessoStats().subscribe((processoStats) => {
       this.processoStats = processoStats[0];
-      this.avgCaseDuration.anos = Math.floor(
-        this.processoStats.avgCaseDuration / 31104000
-      );
-
-      this.processoStats.avgCaseDuration -=
-        this.avgCaseDuration.anos * 31104000;
-
-      this.avgCaseDuration.meses = Math.floor(
-        this.processoStats.avgCaseDuration / 2592000
-      );
-
-      this.processoStats.avgCaseDuration -=
-        this.avgCaseDuration.meses * 2592000;
-
-      this.avgCaseDuration.dias = Math.floor(
-        this.processoStats.avgCaseDuration / 86400
-      );
-
-      this.processoStats.avgCaseDuration -= this.avgCaseDuration.dias * 86400;
-
-      this.avgCaseDuration.horas =
-        Math.floor(this.processoStats.avgCaseDuration / 3600) % 24;
-
-      this.processoStats.avgCaseDuration -=
-        Math.floor(this.processoStats.avgCaseDuration / 3600) * 3600;
-
-      this.avgCaseDuration.minutos =
-        Math.floor(this.processoStats.avgCaseDuration / 60) % 60;
-
-      this.processoStats.avgCaseDuration -=
-        Math.floor(this.processoStats.avgCaseDuration / 60) * 60;
+      this.setTimeFromSeconds(this.processoStats.avgCaseDuration);
     });
   }
 
@@ -59,5 +29,27 @@ export class FluxogramComponent {
   private createSvg(): void {
     d3.select('figure#fluxogram > *').remove();
     this.svg = d3.select('figure#fluxogram').append('svg').append('g');
+  }
+
+  setTimeFromSeconds(seconds: number) {
+    this.avgCaseDuration.anos = Math.floor(seconds / 31104000);
+
+    seconds -= this.avgCaseDuration.anos * 31104000;
+
+    this.avgCaseDuration.meses = Math.floor(seconds / 2592000);
+
+    seconds -= this.avgCaseDuration.meses * 2592000;
+
+    this.avgCaseDuration.dias = Math.floor(seconds / 86400);
+
+    seconds -= this.avgCaseDuration.dias * 86400;
+
+    this.avgCaseDuration.horas = Math.floor(seconds / 3600) % 24;
+
+    seconds -= Math.floor(seconds / 3600) * 3600;
+
+    this.avgCaseDuration.minutos = Math.floor(seconds / 60) % 60;
+
+    seconds -= Math.floor(seconds / 60) * 60;
   }
 }
