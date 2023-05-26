@@ -8,8 +8,6 @@ export class FluxogramApi {
   constructor(private readonly http: HttpClient) {}
 
   public fetchProcessosStats() {
-    return this.http.get<ProcessoStats[]>(
-      `http://localhost:8000/api/processos/stats/`
-    );
+    return this.http.get<ProcessoStats[]>(`/api/processos/stats/`);
   }
 }

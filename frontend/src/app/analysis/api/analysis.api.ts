@@ -8,17 +8,12 @@ export class AnalysisApi {
   constructor(private readonly http: HttpClient) {}
 
   public fetchProcessosData() {
-    return this.http.get<{ cases: Processo[] }>(
-      `http://localhost:8000/api/processos/`
-    );
+    return this.http.get<{ cases: Processo[] }>(`/api/processos/`);
   }
 
   public fetchProcessosDataByName(name: string) {
-    return this.http.post<{ cases: Processo[] }>(
-      `http://localhost:8000/api/processos/`,
-      {
-        movimento: name,
-      }
-    );
+    return this.http.post<{ cases: Processo[] }>(`/api/processos/`, {
+      movimento: name,
+    });
   }
 }

@@ -12,7 +12,7 @@ export class ImageApiService {
 
   public getFlowGraph() {
     return this.http
-      .get('http://localhost:8000/api/visualization/image/', {
+      .get('/api/visualization/image/', {
         responseType: 'text',
       })
       .pipe(
