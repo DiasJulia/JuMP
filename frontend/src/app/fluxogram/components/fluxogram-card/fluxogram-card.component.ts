@@ -43,8 +43,8 @@ export class FluxogramCardComponent {
   }
 
   dragStart = (event: any, d: any) => {
-    this.xStart = event.x;
-    this.yStart = event.y;
+    this.xStart = event.x - this.xPosition;
+    this.yStart = event.y - this.yPosition;
   };
 
   dragHandler = (event: any, d: any) => {
