@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProcessStatsComponent } from './components/process-stats/process-stats.component';
+import { FluxogramCardComponent } from './components/fluxogram-card/fluxogram-card.component';
 
 @NgModule({
   providers: [
@@ -20,7 +21,7 @@ import { ProcessStatsComponent } from './components/process-stats/process-stats.
     FluxogramFacade,
     fluxogramInitializerProvider,
   ],
-  declarations: [FluxogramComponent, ProcessStatsComponent],
+  declarations: [FluxogramComponent, ProcessStatsComponent, FluxogramCardComponent],
   imports: [
     CommonModule,
     MatIconModule,
