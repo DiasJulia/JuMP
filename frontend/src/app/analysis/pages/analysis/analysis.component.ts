@@ -8,12 +8,18 @@ import { Processo } from '../../types/Processo';
   styleUrls: ['./analysis.component.scss'],
 })
 export class AnalysisComponent {
-  selectedMovimento: string = 'Expedição de movimento';
+  selectedMovimento: string = 'A12';
   processoList: Processo[] = [];
 
   constructor(facade: AnalysisFacade) {
     facade.getProcessoData().subscribe((processoData) => {
       this.processoList = processoData;
     });
+    facade
+      .getProcessoDataByMovimento(this.selectedMovimento)
+      .subscribe((processoData) => {
+        this.processoList = processoData;
+        console.log(this.processoList);
+      });
   }
 }

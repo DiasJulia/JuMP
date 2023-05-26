@@ -11,7 +11,13 @@ export class AnalysisFacade {
 
   public fetchProcessosData() {
     this.api.fetchProcessosData().subscribe((processosData) => {
-      this.state.setProcessoData(processosData);
+      this.state.setProcessoData(processosData.cases);
+    });
+  }
+
+  public fetchProcessosDataByMovimento(movimento: string) {
+    this.api.fetchProcessosDataByName(movimento).subscribe((processosData) => {
+      this.state.setProcessoData(processosData.cases);
     });
   }
 
@@ -19,5 +25,8 @@ export class AnalysisFacade {
     return this.state.getProcessoData();
   }
 
-  public getProcessosStats() {}
+  public getProcessoDataByMovimento(movimento: string) {
+    this.fetchProcessosDataByMovimento(movimento);
+    return this.state.getProcessoData();
+  }
 }
