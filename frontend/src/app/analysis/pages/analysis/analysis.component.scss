@@ -1,8 +1,8 @@
 #app-analysis {
+  padding: 1em clamp(1em, calc((100vw - 1400px) / 2), calc((100vw - 1400px) / 2));
+
     p.title {
         font-size: 2em;
         font-weight: 300;
     }
-    
-    padding: 1em;
 }
