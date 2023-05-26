@@ -82,14 +82,11 @@ async def get_processos_infos():
 
     for NPU, group in df.groupby(CASE_ID):
         trace_duration = group['duration'].sum()
-        pinned_movimento_count = len(
-            group
-        )
         cases.append({
             "NPU": NPU,
             "totalMovimentos": len(group),
             "totalDuration": trace_duration.total_seconds(),
         })
 
-    return cases
+    return { "cases": cases }
 
