@@ -62,12 +62,13 @@ async def get_processos_infos(request: ProcessosInfosInput):
         pinned_movimento_count = len(
             group[group[ACTIVITY] == pinned_movimento]
         )
-        cases.append({
-            "NPU": NPU,
-            "totalMovimentos": len(group),
-            "totalDuration": trace_duration.total_seconds(),
-            "movimentos": pinned_movimento_count
-        })
+        if pinned_movimento_count > 0:
+            cases.append({
+                "NPU": NPU,
+                "totalMovimentos": len(group),
+                "totalDuration": trace_duration.total_seconds(),
+                "movimentos": pinned_movimento_count
+            })
 
     return { "cases": cases }
 
