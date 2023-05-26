@@ -62,11 +62,13 @@ export class FluxogramCardComponent {
   drawIconInNodes = () => {
     let nodes = d3.selectAll('.node');
     nodes.each((d: any, i: any, n: any) => {
-      console.log(n[i]);
       //append blue circle at the end of each node
       const nodeX = d3.select(n[i]).node().getBBox().x;
       const nodeY = d3.select(n[i]).node().getBBox().y;
+      const movimento = d3.select(n[i]).select('a').attr('xlink:title');
       d3.select(n[i])
+        .append('a')
+        .attr('xlink:href', '/analysis?movimento=' + movimento)
         .append('circle')
         .attr('r', 10)
         .attr('fill', 'white')
