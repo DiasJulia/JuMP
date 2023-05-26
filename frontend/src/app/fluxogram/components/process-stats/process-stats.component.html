@@ -9,10 +9,6 @@
     <p>{{processoStats.casesCount}}</p>
   </div>
   <div class="data-section">
-    <h2>Número de grupos de processos</h2>
-    <p>{{processoStats.avgMovimentosPerCase}}</p>
-  </div>
-  <div class="data-section">
     <h2>Média da duração dos processos</h2>
     <p>{{getTimeFromSeconds(processoStats.avgCaseDuration)}}</p>
   </div>
@@ -22,7 +18,7 @@
   </div>
   <div class="data-section">
     <h2>Média de movimentos por processo</h2>
-    <p>{{processoStats.movimentosCount/processoStats.casesCount}}</p>
+    <p>{{processoStats.avgMovimentosPerCase}}</p>
   </div>
 </div>
 </section>
