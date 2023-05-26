@@ -69,6 +69,8 @@ export class FluxogramCardComponent {
       d3.select(n[i])
         .append('a')
         .attr('xlink:href', '/analysis?movimento=' + movimento)
+        .attr('xlink:title', 'Análise de ' + movimento)
+        .attr('class', 'analysis-link')
         .append('circle')
         .attr('r', 10)
         .attr('fill', 'white')
@@ -76,7 +78,9 @@ export class FluxogramCardComponent {
         .attr('cx', nodeX + 25)
         .attr('cy', nodeY + 18);
       // append exclamation mark in the circle
+      //select a with class analysis-link
       d3.select(n[i])
+        .select('a[class="analysis-link"]')
         .append('text')
         .attr('x', nodeX + 23)
         .attr('y', nodeY + 24)
