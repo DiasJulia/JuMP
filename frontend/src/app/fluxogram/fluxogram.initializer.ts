@@ -4,6 +4,7 @@ import { FluxogramFacade } from './fluxogram.facade';
 export const fluxogramInitializer =
   (fluxogramFacade: FluxogramFacade) => () => {
     fluxogramFacade.fetchProcessosStats();
+    fluxogramFacade.fetchSVG();
   };
 
 export const fluxogramInitializerProvider = {

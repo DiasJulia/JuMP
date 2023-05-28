@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import * as d3 from 'd3';
+import { FluxogramFacade } from '../../fluxogram.facade';
 
 @Component({
   selector: 'app-fluxogram',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class FluxogramComponent {
   ngOnInit(): void {}
+
+  svg: any;
+
+  constructor(private facade: FluxogramFacade) {
+    this.facade.getSVG().subscribe((svg) => {
+      this.svg = svg;
+    });
+  }
 }
