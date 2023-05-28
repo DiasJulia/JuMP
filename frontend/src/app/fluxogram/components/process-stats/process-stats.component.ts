@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FluxogramFacade } from '../../fluxogram.facade';
 import { ProcessoStats } from '../../types/ProcessoStats';
 
@@ -8,18 +8,7 @@ import { ProcessoStats } from '../../types/ProcessoStats';
   styleUrls: ['./process-stats.component.scss'],
 })
 export class ProcessStatsComponent {
-  processoStats: ProcessoStats = <ProcessoStats>{
-    avgCaseDuration: 0,
-    movimentosCount: 0,
-    avgMovimentosPerCase: 0,
-    avgMovimentoDuration: 0,
-  };
-
-  constructor(facade: FluxogramFacade) {
-    facade.getProcessoStats().subscribe((processoStats) => {
-      this.processoStats = processoStats[0];
-    });
-  }
+  @Input() processoStats!: ProcessoStats;
 
   public getTimeFromSeconds(seconds: number) {
     let response = '';
